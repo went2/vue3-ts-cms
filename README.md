@@ -33,3 +33,17 @@
 `src` 目录结构
 
 <img src="./doc-assets/images/src-directory.png" height="300" alt="src-directory">
+
+## 四、重置 CSS
+
+### 使用 less 预处理器
+
+`npm install -D less`
+
+### 重设基本样式
+
+不同的项目重设样式的方式相同。
+
+- `npm install normalize.css`
+- in `main.ts`, `import 'normalize.css'`
+- 创建 `reset.less` 并导入
