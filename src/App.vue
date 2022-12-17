@@ -1,10 +1,14 @@
 <template>
-  <h2>App page</h2>
-  <router-link to="/login">Login</router-link>
-  <router-link to="/main">Main</router-link>
-  <router-view></router-view>
+  <div class="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style lang="less" scoped>
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+</style>
