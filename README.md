@@ -1,6 +1,6 @@
-# vue3-ts-cms
+# Vue3 项目 boilerplate
 
-新建项目时的配置。
+使用 Vue 最新的脚手架（create vite）搭建的项目，集成代码规范、CSS 重置、Vue-router 4.x、Pinia 和 Axios 封装，用于新项目的模板文件。
 
 ## 一、创建项目
 
@@ -9,11 +9,18 @@
 - `npm init @vue/latest`，创建一个基于 Vite 和 Rollup 的 Vue 项目，官方推荐
 - `vue create <project-name>`， 创建一个基于 Vue Cli 和 Webpack 的项目
 
+本项目使用前一种。
+
 ## 二、配置代码规范
 
 ### 1. 使用 editorconfig 统一不同编辑器的代码格式
 
-用于统一不同 IDE 编辑源码的代码风格。`.editorconfig` 本身只是一个配置文件，代码风格的统一由 IDE 实现，EditorConfig 为不同 IDE 提供了插件实现规范功能。VS Code 中安装 `EditorConfig for VS Code` 插件，在根目录创建 `.editorconfig` 即可。配置内容参考本项目配置，或 Github 上开源项目如 Vue、React 的配置。
+用于统一不同 IDE 编辑源码的代码风格。`.editorconfig` 本身只是一个配置文件，代码风格的统一由 IDE 实现，EditorConfig 为不同 IDE 提供了插件实现规范功能。
+
+- VS Code 中安装 `EditorConfig for VS Code` 插件
+- 在根目录创建 `.editorconfig`
+
+具体配置内容参考本项目配置，或 Github 上开源项目如 Vue、React 的配置。
 
 ### 2. 使用 prettier 做代码美化
 
@@ -30,7 +37,7 @@
 
 ## 三、目录结构
 
-`src` 目录结构
+`src` 目录结构见
 
 <img src="./doc-assets/images/src-directory.png" height="300" alt="src-directory">
 

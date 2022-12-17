@@ -1,6 +1,6 @@
 {
-  "name": "vue3-ts-cms",
-  "version": "0.0.0",
+  "name": "vue3-boilerplate",
+  "version": "0.8.0",
   "private": true,
   "scripts": {
     "dev": "vite",
