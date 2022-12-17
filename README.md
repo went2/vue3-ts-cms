@@ -1,6 +1,14 @@
 # Vue3 项目 boilerplate
 
-使用 Vue 最新的脚手架（create vite）搭建的项目，集成代码规范、CSS 重置、Vue-router 4.x、Pinia 和 Axios 封装，用于新项目的模板文件。
+使用 Vue 最新的脚手架（create vite）搭建的项目，用于新项目的模板文件。做了以下配置：
+  - 代码规范
+  - CSS 重置
+  - 集成 Vue-router 4.x 和 Pinia
+  - 封装 Axios
+
+**使用**：`git clone`, `npm install`, `npm run dev`
+
+以下是创建本项目时的记录。
 
 ## 一、创建项目
 
