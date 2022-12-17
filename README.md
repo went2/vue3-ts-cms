@@ -48,7 +48,12 @@
 - in `main.ts`, `import 'normalize.css'`
 - 创建 `reset.less` 并导入
 
-## 五、集成配置 vue-router 与 pinia
+## 五、集成 vue-router 与 pinia
 
-vue-router: 见 `src/router`
-pinia: 见 `src/store`
+- vue-router: 见 `src/router`
+- pinia: 见 `src/store`
+
+## 六、集成 axios
+
+- axios 封装见 `src/service/index.ts`
+- 开发环境与生产环境的配置见 `src/service/config/index.ts`
