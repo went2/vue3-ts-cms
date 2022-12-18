@@ -1,18 +1,18 @@
 <template>
   <div class="main">
     <h2>This is Main Page</h2>
-    <h3>{{ counterStore.count }} - {{ counterStore.doubleCount }}</h3>
-    <button @click="changeCount">Add 1</button>
+    <el-button @click="handleLogout" type="primary">退出登录</el-button>
   </div>
 </template>
 
 <script setup lang="ts">
-import useCounterStore from '@/store/counter';
+import { LOGIN_TOKEN } from '@/global/constants';
+import router from '@/router';
+import { localCache } from '@/utils/cache';
 
-const counterStore = useCounterStore();
-
-const changeCount = () => {
-  counterStore.addOneAction();
+const handleLogout = () => {
+  localCache.removeCache(LOGIN_TOKEN);
+  router.push('/login');
 };
 </script>
 
