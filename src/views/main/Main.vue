@@ -1,12 +1,12 @@
 <template>
   <div class="main">
     <el-container class="main-container">
-      <el-aside width="200px" class="main-aside">
-        <main-aside></main-aside>
+      <el-aside :width="isFold ? '60px' : '200px'" class="main-aside">
+        <main-aside :is-fold="isFold"></main-aside>
       </el-aside>
       <el-container>
         <el-header>
-          <main-header></main-header>
+          <main-header @fold-change="handleFoldChange"></main-header>
         </el-header>
         <el-main>Main</el-main>
       </el-container>
@@ -15,8 +15,14 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import MainAside from '@/components/mainAside/MainAside.vue';
 import MainHeader from '@/components/mainHeader/MainHeader.vue';
+
+const isFold = ref(false);
+const handleFoldChange = (value: boolean) => {
+  isFold.value = value;
+};
 </script>
 
 <style lang="less" scoped>
@@ -39,7 +45,7 @@ import MainHeader from '@/components/mainHeader/MainHeader.vue';
   }
 
   .el-header {
-    border: 1px solid #333;
+    // border: 1px solid #333;
   }
 
   .el-main {

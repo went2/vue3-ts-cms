@@ -2,12 +2,13 @@
   <div class="main-aside">
     <div class="brand">
       <img src="@/assets/images/logo.png" alt="" class="logo" />
-      <h1 class="title">后台管理系统</h1>
+      <h2 v-show="!isFold" class="title">后台管理系统</h2>
     </div>
 
     <el-menu
       active-text-color="#fff"
       background-color="#001529"
+      :collapse="isFold"
       class="el-menu-vertical-demo"
       default-active="2"
       text-color="#b7bdc3"
@@ -34,7 +35,16 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps } from 'vue';
+
 import useLoginStore from '@/store/login/login';
+
+defineProps({
+  isFold: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const { menu } = useLoginStore();
 </script>
@@ -44,12 +54,14 @@ const { menu } = useLoginStore();
   .brand {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    white-space: nowrap;
+    padding: 0 10px;
     .logo {
       width: 50px;
       height: 50px;
     }
     .title {
+      margin-left: 10px;
       color: #fff;
       font-size: 20px;
     }
