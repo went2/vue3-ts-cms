@@ -28,7 +28,14 @@ import MainHeader from '@/components/mainHeader/MainHeader.vue';
   }
   .el-aside {
     height: 100%;
-    border: 1px solid #333;
+    background-color: #001529;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left;
+    cursor: pointer;
+    transition: width 0.3s linear;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .el-header {

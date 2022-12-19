@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import type { ILoginRequest } from '@/types/login.d';
 import { localCache } from '@/utils/cache';
-import { LOGIN_TOKEN } from '@/global/constants';
+import { LOGIN_TOKEN, USER_INFO, USER_MENU } from '@/global/constants';
 import router from '@/router';
 import { login, getUserInfo, getUserMenu } from '@/service/login/login';
 
@@ -21,16 +21,21 @@ const useLoginStore = defineStore('login', {
     async userLoginAction(data: ILoginRequest) {
       const info = await login(data);
       const id = info.id;
-      this.token = info.token;
-
-      // 本地缓存
-      localCache.setCache(LOGIN_TOKEN, this.token);
+      const token = info.token;
+      this.token = token;
 
       // get user info
-      this.userInfo = await getUserInfo(id);
+      const userInfoResult = await getUserInfo(id);
+      this.userInfo = userInfoResult;
 
       // get user menus
-      this.menu = await getUserMenu(this.userInfo.role.id);
+      const menuResult = await getUserMenu(this.userInfo.role.id);
+      this.menu = menuResult;
+
+      // 本地缓存
+      localCache.setCache(LOGIN_TOKEN, token);
+      localCache.setCache(USER_INFO, userInfoResult);
+      localCache.setCache(USER_MENU, menuResult);
 
       // go to main page
       router.push('/main');

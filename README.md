@@ -1,7 +1,3 @@
-# Vue3 项目 boilerplate
+# Vue3 content management system
 
-A SPA Content Management System:
-
-- built with Vue3 and TypeScript
-- boot up with a [Vue3 boilerplate project](https://github.com/went2/vue3-boilerplate)
-- using Element Plus
+A SPA content management system boot up with [Vue3 boilerplate project](https://github.com/went2/vue3-boilerplate)
