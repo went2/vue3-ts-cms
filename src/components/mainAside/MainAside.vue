@@ -27,10 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { localCache } from '@/utils/cache';
-import { USER_MENU } from '@/global/constants';
+import useLoginStore from '@/store/login/login';
 
-const menu = localCache.getCache(USER_MENU);
+const { menu } = useLoginStore();
 </script>
 
 <style lang="less" scoped>

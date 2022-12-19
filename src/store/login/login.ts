@@ -14,8 +14,8 @@ interface IState {
 const useLoginStore = defineStore('login', {
   state: (): IState => ({
     token: '',
-    userInfo: {},
-    menu: [],
+    userInfo: localCache.getCache(USER_INFO) ?? {},
+    menu: localCache.getCache(USER_MENU) ?? [],
   }),
   actions: {
     async userLoginAction(data: ILoginRequest) {
