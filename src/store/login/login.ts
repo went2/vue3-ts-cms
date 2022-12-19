@@ -23,6 +23,7 @@ const useLoginStore = defineStore('login', {
       const id = info.id;
       const token = info.token;
       this.token = token;
+      localCache.setCache(LOGIN_TOKEN, token);
 
       // get user info
       const userInfoResult = await getUserInfo(id);
@@ -33,7 +34,6 @@ const useLoginStore = defineStore('login', {
       this.menu = menuResult;
 
       // 本地缓存
-      localCache.setCache(LOGIN_TOKEN, token);
       localCache.setCache(USER_INFO, userInfoResult);
       localCache.setCache(USER_MENU, menuResult);
 

@@ -12,16 +12,23 @@
       default-active="2"
       text-color="#b7bdc3"
     >
-      <el-sub-menu v-for="item in menu" :key="item.id">
-        <template #title>
-          <el-icon><Setting /></el-icon>
-          <span>{{ item.name }}</span>
-        </template>
+      <template v-for="item in menu" :key="item.id">
+        <el-sub-menu :index="item.id + ''">
+          <template #title>
+            <!-- dynamic component: el-icon-setting => <Setting /> -->
+            <el-icon>
+              <component :is="item.icon.split('el-icon-')[1]" />
+            </el-icon>
+            <span>{{ item.name }}</span>
+          </template>
 
-        <el-menu-item v-for="subMenu in item.children" :key="subMenu.id">
-          {{ subMenu.name }}
-        </el-menu-item>
-      </el-sub-menu>
+          <template v-for="subMenu in item.children" :key="subMenu.id">
+            <el-menu-item :index="subMenu.id + ''">
+              {{ subMenu.name }}
+            </el-menu-item>
+          </template>
+        </el-sub-menu>
+      </template>
     </el-menu>
   </div>
 </template>
