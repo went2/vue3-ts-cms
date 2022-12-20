@@ -4,6 +4,7 @@ import { localCache } from '@/utils/cache';
 import { LOGIN_TOKEN, USER_INFO, USER_MENU } from '@/global/constants';
 import router from '@/router';
 import { login, getUserInfo, getUserMenu } from '@/service/login/login';
+import mapMenuToRoutes from '@/utils/mapMenuToRoutes';
 
 interface IState {
   token: string;
@@ -14,8 +15,8 @@ interface IState {
 const useLoginStore = defineStore('login', {
   state: (): IState => ({
     token: '',
-    userInfo: localCache.getCache(USER_INFO) ?? {},
-    menu: localCache.getCache(USER_MENU) ?? [],
+    userInfo: {},
+    menu: [],
   }),
   actions: {
     async userLoginAction(data: ILoginRequest) {
@@ -37,25 +38,17 @@ const useLoginStore = defineStore('login', {
       localCache.setCache(USER_INFO, userInfoResult);
       localCache.setCache(USER_MENU, menuResult);
 
-      // 动态添加路由对象
-      menuResult.forEach((item: any) => {
-        const firstMenu = item.url.split('/')[2];
-
-        if (item.children) {
-          // 添加一级菜单路由
-          router.addRoute('main', {
-            path: item.url,
-            redirect: item.children[0].path,
-            children: item.children.map((secondMenu: any) => ({
-              path: secondMenu.url,
-              components: () => import(`@/views/${firstMenu}/${secondMenu.url.split('/')[3]}`),
-            })),
-          });
-        }
-      });
-
       // go to main page
       router.push('/main');
+    },
+    setStoreFromLocal() {
+      const userInfo = localCache.getCache(USER_INFO) ?? {};
+      const menu = localCache.getCache(USER_MENU) ?? [];
+      this.userInfo = userInfo;
+      this.menu = menu;
+
+      // 根据菜单动态添加路由
+      mapMenuToRoutes();
     },
     userLogoutAction() {
       localCache.removeCache(LOGIN_TOKEN);
