@@ -4,7 +4,7 @@ import { localCache } from '@/utils/cache';
 import { LOGIN_TOKEN, USER_INFO, USER_MENU } from '@/global/constants';
 import router from '@/router';
 import { login, getUserInfo, getUserMenu } from '@/service/login/login';
-import mapMenuToRoutes from '@/utils/mapMenuToRoutes';
+import mapMenuToRoutes from '@/utils/mapMenu';
 
 interface IState {
   token: string;

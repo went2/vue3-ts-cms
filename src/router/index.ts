@@ -1,7 +1,7 @@
 import { LOGIN_TOKEN } from '@/global/constants';
 import { localCache } from '@/utils/cache';
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { firstMenu } from '@/utils/mapMenuToRoutes';
+import { firstMenu } from '@/utils/mapMenu';
 
 const router = createRouter({
   history: createWebHashHistory(),

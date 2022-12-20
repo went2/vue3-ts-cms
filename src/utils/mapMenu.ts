@@ -35,3 +35,13 @@ function addDynamicRoutes(menu: any, localRoutes: RouteRecordRaw[]) {
     }
   }
 }
+
+export function mapPathToMenu(path: string, userMenu: any[]) {
+  for (const menu of userMenu) {
+    for (const subMenu of menu.children) {
+      if (subMenu.url === path) {
+        return subMenu;
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@
       background-color="#001529"
       :collapse="isFold"
       class="el-menu-vertical-demo"
-      default-active="1"
+      :default-active="defaultActive"
       text-color="#b7bdc3"
     >
       <template v-for="item in menu" :key="item.id">
@@ -35,9 +35,10 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import router from '@/router';
+import { defineProps, ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import useLoginStore from '@/store/login/login';
+import { mapPathToMenu } from '@/utils/mapMenu';
 
 defineProps({
   isFold: {
@@ -47,6 +48,11 @@ defineProps({
 });
 
 const { menu } = useLoginStore();
+
+const router = useRouter();
+const route = useRoute();
+const currentRoute = mapPathToMenu(route.path, menu);
+const defaultActive = ref(currentRoute.id + '');
 
 const handleSubMenuClick = (path: string) => {
   router.push(path);
