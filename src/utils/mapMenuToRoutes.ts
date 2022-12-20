@@ -19,12 +19,18 @@ export default function mapMenuToRoutes() {
   addDynamicRoutes(menu, localRoutes);
 }
 
+export let firstMenu: any = null;
+
 function addDynamicRoutes(menu: any, localRoutes: RouteRecordRaw[]) {
   for (const topMenu of menu) {
     for (const subMenu of topMenu.children) {
       const routeObj = localRoutes.find((route) => route.path === subMenu.url);
       if (routeObj) {
         router.addRoute('main', routeObj);
+
+        if (firstMenu === null) {
+          firstMenu = routeObj;
+        }
       }
     }
   }
