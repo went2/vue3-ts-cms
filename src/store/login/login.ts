@@ -40,6 +40,12 @@ const useLoginStore = defineStore('login', {
       // go to main page
       router.push('/main');
     },
+    userLogoutAction() {
+      localCache.removeCache(LOGIN_TOKEN);
+      localCache.removeCache(USER_INFO);
+      localCache.removeCache(USER_MENU);
+      router.push('/login');
+    },
   },
 });
 
