@@ -37,6 +37,23 @@ const useLoginStore = defineStore('login', {
       localCache.setCache(USER_INFO, userInfoResult);
       localCache.setCache(USER_MENU, menuResult);
 
+      // 动态添加路由对象
+      menuResult.forEach((item: any) => {
+        const firstMenu = item.url.split('/')[2];
+
+        if (item.children) {
+          // 添加一级菜单路由
+          router.addRoute('main', {
+            path: item.url,
+            redirect: item.children[0].path,
+            children: item.children.map((secondMenu: any) => ({
+              path: secondMenu.url,
+              components: () => import(`@/views/${firstMenu}/${secondMenu.url.split('/')[3]}`),
+            })),
+          });
+        }
+      });
+
       // go to main page
       router.push('/main');
     },

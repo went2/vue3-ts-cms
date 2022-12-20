@@ -10,7 +10,7 @@
       background-color="#001529"
       :collapse="isFold"
       class="el-menu-vertical-demo"
-      default-active="2"
+      default-active="1"
       text-color="#b7bdc3"
     >
       <template v-for="item in menu" :key="item.id">
@@ -24,7 +24,7 @@
           </template>
 
           <template v-for="subMenu in item.children" :key="subMenu.id">
-            <el-menu-item :index="subMenu.id + ''">
+            <el-menu-item :index="subMenu.id + ''" @click="handleSubMenuClick(subMenu.url)">
               {{ subMenu.name }}
             </el-menu-item>
           </template>
@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
-
+import router from '@/router';
 import useLoginStore from '@/store/login/login';
 
 defineProps({
@@ -47,6 +47,10 @@ defineProps({
 });
 
 const { menu } = useLoginStore();
+
+const handleSubMenuClick = (path: string) => {
+  router.push(path);
+};
 </script>
 
 <style lang="less" scoped>
